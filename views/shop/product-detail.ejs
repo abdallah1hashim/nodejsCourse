@@ -4,16 +4,16 @@
     <body>
         <%- include("../includes/navigation.ejs") %>
         <main class="centered">
-            <h1><%= prod.title %></h1>
+            <h1><%= product.title %></h1>
             <hr>
-            <div>
-                <img src="<%= prod.imageUrl %>" alt="<%= prod.title %>">
+            <div class="img-holder">
+                <img src="<%= product.imgUrl %>" alt="<%= product.title %>">
             </div>
-            <h2><%= prod.price %></h2>
-            <p><%= prod.Details %></p>
+            <h2><%= product.price %></h2>
+            <p><%= product.Details %></p>
             <div class="card__actions">
                 <%- include("../includes/add-to-cart.ejs") %>
             </div>
-
+            <input type="hidden" name="productId" value="<%= product.id %>"> 
         </main>
         <%- include("../includes/end.ejs") %>
