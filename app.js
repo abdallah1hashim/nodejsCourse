@@ -2,6 +2,7 @@ const path = require("path");
 
 const express = require("express");
 const bodyParser = require("body-parser");
+const mongoose = require("mongoose");
 
 const errorController = require("./Controllers/error.js");
 const mongoConnect = require("./util/database.js").mongoConnect;
@@ -21,7 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use((req, res, next) => {
   User.findById("658c6874df39de6dfe402ec3")
     .then((user) => {
-      req.user = new User(user.username, user.email, user.cart, user._id);
+      req.user = new User(user.username, user.email, user._id, user.cart);
       next();
     })
     .catch((err) => console.log(err));

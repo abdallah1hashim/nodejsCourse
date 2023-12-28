@@ -64,9 +64,17 @@ exports.getIndex = (req, res, next) => {
 
 exports.postCart = (req, res, next) => {
   const prodId = req.body.productId;
-  Product.findByID(prodId).then((product) => {
-    return req.user.addToCart(product);
-  });
+  Product.findByID(prodId)
+    .then((product) => {
+      return req.user.addToCart(product);
+    })
+    .then((result) => {
+      console.log(result);
+      console.log(req.user);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
 
 // exports.postCartDeleteProduct = (req, res, next) => {
